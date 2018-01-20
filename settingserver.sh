@@ -6,6 +6,10 @@ myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 echo "SET TIMEZONE KUALA LUMPUT GMT +8"
 ln -fs /usr/share/zoneinfo/Asia/Kuala_Lumpur /etc/localtime;
 
+# disable ipv6
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+sed -i '$ i\echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6' /etc/rc.local
+
 
 #install sudo
 apt-get -y install sudo
@@ -92,7 +96,6 @@ apt-get install make
 cd
 wget https://raw.githubusercontent.com/rasta-team/Full-Debian7-32bit/master/shc-3.8.7.tgz
 tar xvfz shc-3.8.7.tgz
-
 cd shc-3.8.7
 make
 ./shc -f /usr/local/bin/menu
