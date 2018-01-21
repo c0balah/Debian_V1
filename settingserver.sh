@@ -83,24 +83,3 @@ sysctl vm.swappiness=20
 #permission swapfile
 chown root:root /swapfile 
 chmod 0600 /swapfile
-
-# Install Menu Copy
-cd
-wget "https://raw.githubusercontent.com/rasta-team/Full-Debian7-32bit/master/menu"
-mv ./menu /usr/local/bin/menu
-chmod +x /usr/local/bin/menu
-
-# shc file
-cd
-apt-get install make
-cd
-wget https://raw.githubusercontent.com/rasta-team/Full-Debian7-32bit/master/shc-3.8.7.tgz
-tar xvfz shc-3.8.7.tgz
-cd shc-3.8.7
-make
-./shc -f /usr/local/bin/menu
-cd
-mv /usr/local/bin/menu.x /usr/local/bin/menu
-chmod +x /usr/local/bin/menu
-cd
-
